@@ -1,0 +1,20 @@
+[Unit]
+Description=Secure Flask Web Application
+After=network.target
+
+[Service]
+Type=exec
+User=ec2-user
+WorkingDirectory=/home/ec2-user/secure-app
+Environment="S3_BUCKET=your-secure-app-bucket-uniquename"
+ExecStart=/home/ec2-user/.local/bin/gunicorn \
+    --workers 3 \
+    --bind 127.0.0.1:8000 \
+    --access-logfile /var/log/secure-app/access.log \
+    --error-logfile /var/log/secure-app/error.log \
+    app:app
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

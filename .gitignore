@@ -1,0 +1,19 @@
+# AWS Keys — NEVER commit these
+*.pem
+*.ppk
+.aws/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+
+# Secrets
+secrets.json
+*.local.*
+
+# OS
+.DS_Store
+Thumbs.db
